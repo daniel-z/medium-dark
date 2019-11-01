@@ -66,5 +66,7 @@ function applyDarkStyles () {
 };
 
 if (document.querySelector('head meta[property="al:ios:app_name"][content="medium" i]')) {
-  applyDarkStyles();
+  if(window.location.pathname !== '/') {
+    applyDarkStyles();
+  }
 }
