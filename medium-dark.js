@@ -18,7 +18,7 @@ function applyDarkStyles () {
   var grayColor = '#090909';
 
   //  BG Color Elements
-  var bgColorClasses = ['c', 'dc'];
+  var bgColorClasses = ['c', 'dc', 'metabar', 'extremeHero-container', 'homeContainer'];
   var bgstyle = `background-color: ${darkColor};`;
 
   bgColorClasses.forEach(function changingColorElements(className) {
@@ -47,8 +47,19 @@ function applyDarkStyles () {
     applyToElems(document.getElementsByTagName(tagName), colorStyle);
   });
 
-  // special cases
-  applyToElems(document.getElementsByClassName('ax'), colorStyle);
+  var colorStyleToClasses = [
+    'ax',
+    'ui-h1',
+    'ui-h2',
+    'ui-h3',
+    'ui-h4',
+    'ui-summary',
+    'ui-capsSubtle'
+  ];
+
+  colorStyleToClasses.forEach(function changingColorElements(className) {
+    applyToElems(document.getElementsByClassName(className), colorStyle);
+  });
 
   // marks
   applyToElems(document.getElementsByTagName('mark'), `background-color: ${grayColor};`);  
@@ -56,5 +67,4 @@ function applyDarkStyles () {
 
 if (document.querySelector('head meta[property="al:ios:app_name"][content="medium" i]')) {
   applyDarkStyles();
-	observer.observe(document.body, config);
 }
